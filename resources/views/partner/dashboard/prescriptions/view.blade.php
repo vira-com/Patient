@@ -1,155 +1,159 @@
-@extends('admin.dashboard.layouts.dashboard')
+@extends('partner.dashboard.layouts.dashboard')
 @section('page_title')
-    @parent
-    نسخه-{{$drugPrescription->id}}
+@parent
+نسخه-{{$drugPrescription->id}}
 @endsection
 @section('main')
-    <!-- Select2 -->
-    <link rel="stylesheet" href="/assets/panel/bower_components/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" href="/assets/panel/dist/css/persian-datepicker-0.4.5.min.css" />
-    <!-- Content Header (Page header) -->
-    <section class="content-header" xmlns="http://www.w3.org/1999/html">
-        <h1>
-            لیست نسخ
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="admin/panel/dashboard"><i class="fa fa-dashboard"></i> خانه</a></li>
-            <li class="active">لیست نسخ</li>
-        </ol>
-    </section>
+<!-- Select2 -->
+<link rel="stylesheet" href="/assets/panel/bower_components/select2/dist/css/select2.min.css">
+<link rel="stylesheet" href="/assets/panel/dist/css/persian-datepicker-0.4.5.min.css" />
+<!-- Content Header (Page header) -->
+<section class="content-header" xmlns="http://www.w3.org/1999/html">
+    <h1>
+        لیست نسخ
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="partner/panel/dashboard"><i class="fa fa-dashboard"></i> خانه</a></li>
+        <li class="active">لیست نسخ</li>
+    </ol>
+</section>
 
-    <!-- Main content -->
-    <section class="content">
-        <div class="col-md-12">
-            <div class="box">
-                <div class="box-body">
-                    <div class="row">
+<!-- Main content -->
+<section class="content">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-body">
+                <div class="row">
 
-                        @foreach($imgs as $img)
-                            <div class="col-xs-{{12/$loop->count}}">
-                                <img src="data:image/png;{{$img}}" class="img-bordered-sm" style="width: 100% ;border-radius: 8px;" alt="صفحه {{$loop->index + 1}}"
-                                     onclick="myFunction(this);">
-                            </div>
-                        @endforeach
+                    @foreach($imgs as $img)
+                    <div class="col-xs-{{12/$loop->count}}">
+                        <img src="data:image/png;{{$img}}" class="img-bordered-sm"
+                            style="width: 100% ;border-radius: 8px;" alt="صفحه {{$loop->index + 1}}"
+                            onclick="myFunction(this);">
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="container" style="width: auto;">
-                            <!-- Close the image -->
-                            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-                            <!-- Expanded image -->
-                            <img id="expandedImg" style="width:100%">
-                            <!-- Image text -->
-                            <div id="imgtext"></div>
-                        </div>
-                        <!-- The expanding image container -->
+                    @endforeach
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="container" style="width: auto;">
+                        <!-- Close the image -->
+                        <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+                        <!-- Expanded image -->
+                        <img id="expandedImg" style="width:100%">
+                        <!-- Image text -->
+                        <div id="imgtext"></div>
                     </div>
+                    <!-- The expanding image container -->
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                {!! Form::open(['url' => 'admin/panel/prescription/'.$drugPrescription->id, 'method' => 'post' ,'enctype'=>'multipart/form-data']) !!}
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="box">
-                            <div class="box-body">
-                                <div class="box-title"><label>اطلاعات بیمار</label></div>
-                                <div class="form-group">
-                                    <div class="col-md-6">
-                                        <div class="input-group">
-                                            <input type="number" id="patientCode" name="patientCode" class="form-control" placeholder="کد ملی بیمار" required>
-                                            <div class="input-group-addon">
-                                                <i>کد ملی بیمار</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="input-group">
-                                            <input type="text" id="trackingCode" name="trackingCode" class="form-control" placeholder="کد رهگیری بیمه" required>
-                                            <div class="input-group-addon">
-                                                <i>کد رهگیری بیمه</i>
-                                            </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {!! Form::open(['url' => 'partner/panel/prescription/'.$drugPrescription->id, 'method' => 'post'
+            ,'enctype'=>'multipart/form-data']) !!}
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <div class="box-title"><label>اطلاعات بیمار</label></div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <input type="number" id="patientCode" name="patientCode" class="form-control"
+                                            placeholder="کد ملی بیمار" required>
+                                        <div class="input-group-addon">
+                                            <i>کد ملی بیمار</i>
                                         </div>
                                     </div>
                                 </div>
-                                <hr>
-                                <button type="submit" class="btn btn-success">ثبت</button>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <input type="text" id="trackingCode" name="trackingCode" class="form-control"
+                                            placeholder="کد رهگیری بیمه" required>
+                                        <div class="input-group-addon">
+                                            <i>کد رهگیری بیمه</i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
+                            <hr>
+                            <button type="submit" class="btn btn-success">ثبت</button>
                         </div>
 
                     </div>
 
                 </div>
+
             </div>
         </div>
+    </div>
 
-            <!-- /.box-tools -->
+    <!-- /.box-tools -->
 
-        </div>
-        <!-- /.box -->
+    </div>
+    <!-- /.box -->
 
-        </div>
+    </div>
 
-        </div>
+    </div>
 
-        </div>
+    </div>
 
-    </section>
-    <!-- /.content -->
-    <style>
-        /* The grid: Four equal columns that floats next to each other */
-        .column {
-            float: left;
-            width: 25%;
-            padding: 10px;
-        }
+</section>
+<!-- /.content -->
+<style>
+    /* The grid: Four equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 25%;
+        padding: 10px;
+    }
 
-        /* Style the images inside the grid */
-        .column img {
-            opacity: 0.8;
-            cursor: pointer;
-        }
+    /* Style the images inside the grid */
+    .column img {
+        opacity: 0.8;
+        cursor: pointer;
+    }
 
-        .column img:hover {
-            opacity: 1;
-        }
+    .column img:hover {
+        opacity: 1;
+    }
 
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 
-        /* The expanding image container (positioning is needed to position the close button and the text) */
-        .container {
-            position: relative;
-            display: none;
-        }
+    /* The expanding image container (positioning is needed to position the close button and the text) */
+    .container {
+        position: relative;
+        display: none;
+    }
 
-        /* Expanding image text */
-        #imgtext {
-            position: absolute;
-            bottom: 15px;
-            left: 15px;
-            color: black;
-            font-size: 20px;
-        }
+    /* Expanding image text */
+    #imgtext {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        color: black;
+        font-size: 20px;
+    }
 
-        /* Closable button inside the image */
-        .closebtn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            color: black;
-            font-size: 35px;
-            cursor: pointer;
-        }
-    </style>
-    <script type="text/javascript">
-        function myFunction(imgs) {
+    /* Closable button inside the image */
+    .closebtn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        color: black;
+        font-size: 35px;
+        cursor: pointer;
+    }
+</style>
+<script type="text/javascript">
+    function myFunction(imgs) {
             // Get the expanded image
             var expandImg = document.getElementById("expandedImg");
             // Get the image text
@@ -162,9 +166,9 @@
             expandImg.parentElement.style.display = "block";
         }
 
-    </script>
-    <script>
-        function getPData() {
+</script>
+<script>
+    function getPData() {
             var nationalCode = document.getElementById("nationalCode").value;
             $.ajax({
                 type: 'GET',
@@ -182,9 +186,9 @@
                 }
             });
         }
-    </script>
-    <script>
-        function savepage(put) {
+</script>
+<script>
+    function savepage(put) {
 
             var b = $('#f-' + put).attr("data-id");
             var c = parseInt(b);
@@ -215,7 +219,7 @@
         }
 
 
-    </script>
+</script>
 
 
 @endsection

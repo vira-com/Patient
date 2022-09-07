@@ -101,7 +101,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/assets/panel/dist/img/dravatar.png" class="user-image" alt="User Image">
                                 <span class="hidden-xs"> aaa
-                                    {{-- {{$data['adminName']}} --}}
+                                    {{-- {{$data['partnerName']}} --}}
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
@@ -110,9 +110,9 @@
                                     <img src="/assets/panel/dist/img/dravatar.png" class="img-circle" alt="User Image">
 
                                     <p>
-                                        {{-- {{$data['adminName']}} --}}
+                                        {{-- {{$data['partnerName']}} --}}
 
-                                        {{-- <small>{{$data['adminLevel']}}</small> --}}
+                                        {{-- <small>{{$data['partnerLevel']}}</small> --}}
                                     </p>
                                 </li>
                                 <li class="user-footer">
@@ -120,7 +120,7 @@
                                         <a href="#" class="btn btn-default btn-flat">پروفایل</a>
                                     </div>
                                     <div class="pull-left">
-                                        <a href="{{url('admin/panel/logout')}}"
+                                        <a href="{{url('partner/panel/logout')}}"
                                             class="btn btn-default btn-flat">خروج</a>
                                     </div>
                                 </li>
@@ -144,7 +144,7 @@
                         <img src="/assets/panel/dist/img/dravatar.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-right info">
-                        {{-- <p>{{$data['adminName']}}</p> --}}
+                        {{-- <p>{{$data['partnerName']}}</p> --}}
                         <a href="#"><i class="fa fa-circle text-success"></i> آنلاین</a>
                     </div>
                 </div>
@@ -163,7 +163,7 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">منو</li>
-                    <li class="@if(Request::url() === asset('/admin/panel/dashboard')) active @endif treeview">
+                    <li class="@if(Request::url() === asset('/partner/panel/dashboard')) active @endif treeview">
                         <a href="#">
                             <i class="fa fa-dashboard"></i> <span>داشبرد</span>
                             <span class="pull-left-container">
@@ -171,11 +171,11 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="@if(Request::url() === asset('/admin/panel/dashboard')) active @endif"><a
+                            <li class="@if(Request::url() === asset('/partner/panel/dashboard')) active @endif"><a
                                     href="/doctor/panel/dashboard"><i class="fa fa-circle-o"></i> صفحه اصلی</a></li>
                         </ul>
                     </li>
-                    <li class="@if(Request::url() === asset('/admin/panel/drugstores')) active @endif treeview">
+                    <li class="@if(Request::url() === asset('/partner/panel/drugstores')) active @endif treeview">
                         <a href="#">
                             <i class="fa fa-files-o"></i>
                             <span>داروخانه</span>
@@ -183,11 +183,11 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/admin/panel/drugstores"><i
-                                        class="@if(Request::url() === asset('/admin/panel/drugstores')) active @endif fa fa-circle-o"></i>لیست
+                            <li><a href="/partner/panel/drugstores"><i
+                                        class="@if(Request::url() === asset('/partner/panel/drugstores')) active @endif fa fa-circle-o"></i>لیست
                                     داروخانه</a></li>
-                            <li><a href="/admin/panel/drugstore/new"><i
-                                        class="@if(Request::url() === asset('/admin/panel/drugstores')) active @endif fa fa-circle-o"></i>افزودن
+                            <li><a href="/partner/panel/drugstore/new"><i
+                                        class="@if(Request::url() === asset('/partner/panel/drugstores')) active @endif fa fa-circle-o"></i>افزودن
                                     داروخانه</a></li>
                         </ul>
                     </li>
@@ -199,11 +199,11 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/admin/panel/doctor"><i
-                                        class="@if(Request::url() === asset('/admin/panel/doctor')) active @endif fa fa-circle-o"></i>لیست
+                            <li><a href="/partner/panel/doctor"><i
+                                        class="@if(Request::url() === asset('/partner/panel/doctor')) active @endif fa fa-circle-o"></i>لیست
                                     پزشکان</a></li>
-                            <li><a href="/admin/panel/doctor/new"><i
-                                        class="@if(Request::url() === asset('/admin/panel/doctor')) active @endif fa fa-circle-o"></i>افزودن
+                            <li><a href="/partner/panel/doctor/new"><i
+                                        class="@if(Request::url() === asset('/partner/panel/doctor')) active @endif fa fa-circle-o"></i>افزودن
                                     پزشک</a></li>
                         </ul>
                     </li>
@@ -289,7 +289,7 @@
                 <!-- FastClick -->
                 <script src="/assets/panel/bower_components/fastclick/lib/fastclick.js"></script>
                 <!-- AdminLTE App -->
-                <script src="/assets/panel/dist/js/adminlte.min.js"></script>
+                <script src="/assets/panel/dist/js/AdminLTE.min.js"></script>
                 <!-- Sparkline -->
                 <script src="/assets/panel/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
                 <!-- jvectormap  -->

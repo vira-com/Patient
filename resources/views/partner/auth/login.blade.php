@@ -53,7 +53,7 @@
         <div class="login-box-body">
             <p class="login-box-msg">فرم زیر را تکمیل کنید و ورود بزنید</p>
 
-            {!! Form::open(['url'=>'admin/panel/loginhandle','id'=>'CheckForm','method'=>'post','class'=>'text-left'])
+            {!! Form::open(['url'=>'partner/panel/loginhandle','id'=>'CheckForm','method'=>'post','class'=>'text-left'])
             !!}
             <div class="form-group has-feedback">
                 <input type="text" name="email" class="form-control" placeholder="نام کاربری">
@@ -116,7 +116,7 @@
     $("#CheckForm").submit(function (e) {
         $.ajax({
             type: 'POST',
-            url: '/admin/ajax/login',
+            url: '/partner/ajax/login',
             dataType: 'json',
             data: $(this).serialize(),
             success: function (data) {
@@ -127,7 +127,7 @@
 
                 }  else if(data.success == 'ok') {
                     setTimeout(function () {
-                        location.replace("/admin/panel/dashboard");
+                        location.replace("/partner/panel/dashboard");
                     }, 0);
                 }
             },

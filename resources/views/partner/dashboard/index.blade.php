@@ -1,4 +1,4 @@
-@extends('admin.dashboard.layouts.dashboard')
+@extends('partner.dashboard.layouts.dashboard')
 @section('page_title')
 @parent
 سامانه ویرا

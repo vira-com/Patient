@@ -15,7 +15,7 @@ class Drug extends Model
      *
      * @var string
      */
-    protected $primaryKey = 'drugs_id';
+    protected $primaryKey = 'drug_id';
 
     public function prescription()
     {

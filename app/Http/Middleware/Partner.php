@@ -18,6 +18,7 @@ class Partner
     public function handle(Request $request, Closure $next)
     {
         if (!Auth::guard('partner')->check()) {
+            dd(Auth::guard('partner')->check());
             return redirect()->guest('partner/panel/login');
         }
         return $next($request);

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Partner;
 
-use App\Http\Controllers\Controller;
 use App\Models\Partner;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class PartnerController extends Controller
 {
@@ -24,7 +25,7 @@ class PartnerController extends Controller
         $user = Partner::where('email', $request['email'])->first();
         if ($request) {
             if ($user) {
-                if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+                if (Auth::guard('partner')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
                     return response(['msg' => 'با موفقیت وارد شدید', 'success' => 'ok', 'url' => @$url]);
                 } else {
                     return response(['msg' => 'اطلاعات ورود صحیح نمی باشد', 'success' => 'no']);

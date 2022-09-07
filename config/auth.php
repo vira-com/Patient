@@ -78,7 +78,7 @@ return [
             'model' => App\Models\Admin::class,
         ],
         'partner' => [
-            'driver' => 'session',
+            'driver' => 'eloquent',
             'model' => App\Models\Partner::class,
         ],
 
