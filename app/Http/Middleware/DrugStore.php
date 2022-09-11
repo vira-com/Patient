@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Partner
+class DrugStore
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,8 @@ class Partner
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::guard('partner')->check()) {
-            return redirect()->guest('partner/panel/login');
+        if (!Auth::guard('drugstore')->check()) {
+            return redirect()->guest('drugstore/panel/login');
         }
         return $next($request);
     }

@@ -119,7 +119,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/assets/panel/dist/img/dravatar.png" class="user-image" alt="User Image">
                                 <span class="hidden-xs">
-                                    {{$data['partnerName']}}
+                                    {{$data['drugstoreName']}}
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
@@ -128,9 +128,9 @@
                                     <img src="/assets/panel/dist/img/dravatar.png" class="img-circle" alt="User Image">
 
                                     <p>
-                                        {{$data['partnerName']}}
+                                        {{$data['drugstoreName']}}
 
-                                        {{-- <small>{{$data['partnerLevel']}}</small> --}}
+                                        {{-- <small>{{$data['drugstoreLevel']}}</small> --}}
                                     </p>
                                 </li>
                                 <li class="user-footer">
@@ -140,7 +140,7 @@
                                         </a>
                                     </div>
                                     <div class="pull-left">
-                                        <a href="{{url('partner/panel/logout')}}" class="btn btn-default btn-flat">
+                                        <a href="{{url('drugstore/panel/logout')}}" class="btn btn-default btn-flat">
                                             {{ __('messages.exit') }}
                                         </a>
                                     </div>
@@ -165,7 +165,7 @@
                         <img src="/assets/panel/dist/img/dravatar.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-right info">
-                        <p>{{$data['partnerName']}}</p>
+                        <p>{{$data['drugstoreName']}}</p>
                         <a href="#"><i class="fa fa-circle text-success"></i>
                         </a>
                     </div>
@@ -187,7 +187,7 @@
                     <li class="header">
                         {{ __('messages.menu') }}
                     </li>
-                    <li class="@if(Request::url() === asset('/partner/panel/dashboard')) active @endif treeview">
+                    <li class="@if(Request::url() === asset('/drugstore/panel/dashboard')) active @endif treeview">
                         <a href="#">
                             <i class="fa fa-dashboard"></i> <span>
                                 {{ __('messages.dashboard') }}
@@ -197,14 +197,15 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="@if(Request::url() === asset('/partner/panel/dashboard')) active @endif">
+                            <li class="@if(Request::url() === asset('/drugstore/panel/dashboard')) active @endif">
                                 <a href="/doctor/panel/dashboard"><i class="fa fa-circle-o"></i>
                                     {{ __('messages.dashboard') }}
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    {{-- <li class="@if(Request::url() === asset('/partner/panel/drugstores')) active @endif treeview">
+                    {{-- <li
+                        class="@if(Request::url() === asset('/drugstore/panel/drugstores')) active @endif treeview">
                         <a href="#">
                             <i class="fa fa-files-o"></i>
                             <span>داروخانه</span>
@@ -212,11 +213,11 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/partner/panel/drugstores"><i
-                                        class="@if(Request::url() === asset('/partner/panel/drugstores')) active @endif fa fa-circle-o"></i>لیست
+                            <li><a href="/drugstore/panel/drugstores"><i
+                                        class="@if(Request::url() === asset('/drugstore/panel/drugstores')) active @endif fa fa-circle-o"></i>لیست
                                     داروخانه</a></li>
-                            <li><a href="/partner/panel/drugstore/new"><i
-                                        class="@if(Request::url() === asset('/partner/panel/drugstores')) active @endif fa fa-circle-o"></i>افزودن
+                            <li><a href="/drugstore/panel/drugstore/new"><i
+                                        class="@if(Request::url() === asset('/drugstore/panel/drugstores')) active @endif fa fa-circle-o"></i>افزودن
                                     داروخانه</a></li>
                         </ul>
                     </li>
@@ -228,11 +229,11 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="/partner/panel/doctor"><i
-                                        class="@if(Request::url() === asset('/partner/panel/doctor')) active @endif fa fa-circle-o"></i>لیست
+                            <li><a href="/drugstore/panel/doctor"><i
+                                        class="@if(Request::url() === asset('/drugstore/panel/doctor')) active @endif fa fa-circle-o"></i>لیست
                                     پزشکان</a></li>
-                            <li><a href="/partner/panel/doctor/new"><i
-                                        class="@if(Request::url() === asset('/partner/panel/doctor')) active @endif fa fa-circle-o"></i>افزودن
+                            <li><a href="/drugstore/panel/doctor/new"><i
+                                        class="@if(Request::url() === asset('/drugstore/panel/doctor')) active @endif fa fa-circle-o"></i>افزودن
                                     پزشک</a></li>
                         </ul>
                     </li>

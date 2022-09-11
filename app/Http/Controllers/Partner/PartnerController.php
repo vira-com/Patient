@@ -49,7 +49,12 @@ class PartnerController extends Controller
         //     'adminLevel' => $admin->level,
 
         // );   ['data' => $data]
-        return view('partner.dashboard.index');
+        $user = Auth::guard('partner')->user();
+        $data =
+            [
+                "partnerName" => $user->Name,
+            ];
+        return view('partner.dashboard.index', ['data' => $data]);
     }
 
     public function logout()
