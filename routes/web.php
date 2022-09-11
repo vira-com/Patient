@@ -24,6 +24,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/wel', function () {
+    return view('welcome');
+});
+
 
 /*
 Admin:
@@ -66,4 +70,5 @@ Route::post('drugstore/ajax/login', [DrugStoreController::class, 'login']);
 Route::prefix('drugstore/panel')->namespace('App\Http\Controllers\DrugStore')->middleware(\App\Http\Middleware\DrugStore::class)->group(function () {
     Route::get('dashboard', [DrugStoreController::class, 'getDashboard']);
     Route::get('logout', [DrugStoreController::class, 'logout']);
+    
 });
