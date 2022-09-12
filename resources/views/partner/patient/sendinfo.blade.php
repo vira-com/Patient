@@ -1,7 +1,7 @@
 @extends('partner.dashboard.layouts.dashboard')
 @section('page_title')
 @parent
-سامانه ویرا
+ارسال نسخه بیمار
 @endsection
 @section('main')
 <!-- Content Header (Page header) -->
@@ -26,8 +26,9 @@
 <!-- Main content -->
 <section class="content">
 
-    <form action="{{ url('/partner/panel/sendinfohandle') }}" method="POST">
+    <form action="{{ url('/partner/panel/sendinfohandle') }}" method="POST" enctype="multipart/form-data">
         @csrf
+        <div class="box">
         <div class="box-body">
             <div class="form-group">
                 <label>{{ __('messages.select_bimeh_patient') }}</label>
@@ -48,28 +49,35 @@
             </div>
             <div class="form-group col-md-4">
                 <label>
-                    <input type="radio" class="minimal-red" name="bimeh" value="freeb" checked="" required=""
+                    <input type="radio" class="minimal-red" name="bimeh" value="freeb" required=""
                         onchange="myFunc(this)">
                     {{ __('messages.bimeh_free') }}
 
                 </label>
             </div>
 
-        </div>
+
 
         <div class="form-row">
-            <div class="form-group">
-                <label class="form-label" for="typeNumber">
+            <div class="form-group" id="tamin" style="display: none">
+                <label class="form-label" for="National_Code">
                     {{ __('messages.National_Code') }} :
                 </label>
                 <input type="number" name="national_code" id="National_Code" class="form-control" />
             </div>
-
-            <div class="form-group">
-                <label class="form-label" for="typeNumber">
+            <div class="form-group" id="hdk" style="display: none">
+                <label class="form-label" for="Tracking_Code">
                     {{ __('messages.Tracking_Code') }} :
                 </label>
                 <input type="number" name="tracking_code" id="Tracking_Code" class="form-control" />
+            </div>
+            <div class="form-group" id="freeb" style="display: none">
+                <div class="input-group">
+                    <label class="form-label" for="file">
+                        {{ __('messages.image') }} :
+                    </label>
+                    <input type="file" class="form-control" name="upludeFile"/>
+                </div>
             </div>
         </div>
 
@@ -78,25 +86,13 @@
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
-            <option value="4">Four</option>
-            <option value="5">Five</option>
         </select>
 
-        <hr>
-
-        <div class="input-group">
-            <label class="form-label" for="file">
-                {{ __('messages.image') }} :
-            </label>
-            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
-                aria-label="Upload">
-        </div>
-
-        <hr>
-
+            <hr>
         <button type="submit" class="btn btn-primary">{{ __('messages.submit') }}</button>
     </form>
-
+    </div>
+    </div>
 </section>
 
 
@@ -105,19 +101,19 @@
 
             switch(radio.value) {
                 case "tamin":
-                    // document.getElementById('tamin').style.display = 'block';
-                    // document.getElementById('hdk').style.display = 'none';
-                    // document.getElementById('freeb').style.display = 'none';
+                    document.getElementById('tamin').style.display = 'block';
+                    document.getElementById('hdk').style.display = 'none';
+                    document.getElementById('freeb').style.display = 'none';
                     break;
                 case "hdk":
-                    // document.getElementById('hdk').style.display = 'block';
-                    // document.getElementById('tamin').style.display = 'none';
-                    // document.getElementById('freeb').style.display = 'none';
+                    document.getElementById('hdk').style.display = 'block';
+                    document.getElementById('tamin').style.display = 'block';
+                    document.getElementById('freeb').style.display = 'none';
                     break;
                 case "freeb":
-                    // document.getElementById('hdk').style.display = 'none';
-                    // document.getElementById('tamin').style.display = 'none';
-                    // document.getElementById('freeb').style.display = 'none';
+                    document.getElementById('hdk').style.display = 'none';
+                    document.getElementById('tamin').style.display = 'none';
+                    document.getElementById('freeb').style.display = 'block';
                     break;
                 default:
             }

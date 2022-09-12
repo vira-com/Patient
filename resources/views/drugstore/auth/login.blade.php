@@ -128,7 +128,7 @@
 
                 }  else if(data.success == 'ok') {
                     setTimeout(function () {
-                        location.replace("/drugsore/panel/dashboard");
+                        location.replace("/drugstore/panel/dashboard");
                     }, 0);
                 }
             },
