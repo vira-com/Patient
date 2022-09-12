@@ -86,7 +86,7 @@ return [
             'model' => App\Models\Partner::class,
         ],
         'drugstore' => [
-            'driver' => 'session',
+            'driver' => 'eloquent',
             'model' => App\Models\DrugStore::class,
         ],
 
