@@ -48,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'partner',
         ],
+        'drugstore' => [
+            'driver' => 'session',
+            'provider' => 'drugstore',
+        ],
     ],
 
     /*
@@ -80,6 +84,10 @@ return [
         'partner' => [
             'driver' => 'eloquent',
             'model' => App\Models\Partner::class,
+        ],
+        'drugstore' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\DrugStore::class,
         ],
 
 
