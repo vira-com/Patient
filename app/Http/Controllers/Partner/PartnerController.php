@@ -53,7 +53,7 @@ class PartnerController extends Controller
         $user = Auth::guard('partner')->user();
         $data =
             [
-                "partnerName" => $user->Name,
+                "Name" => $user->name,
             ];
         return view('partner.dashboard.index', ['data' => $data]);
     }

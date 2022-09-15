@@ -7,12 +7,16 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        داشبرد
-        <small>ورژن 1</small>
+        {{ __('dashboard.dashboard') }}
+        {{-- <small>ورژن 1</small> --}}
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> خانه</a></li>
-        <li class="active">داشبرد</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>
+        {{-- {{  }}     --}}
+        </a></li>
+        <li class="active">
+            {{-- داشبرد --}}
+        </li>
     </ol>
 </section>
 
@@ -25,8 +29,10 @@
                 <span class="info-box-icon bg-aqua"><i class="fa-ellipsis-v"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">نسخه های ارسالی</span>
-                    <span class="info-box-number"> 10
+                    <span class="info-box-text">
+                        {{-- {data}     --}}
+                    </span>
+                    <span class="info-box-number">
                         {{-- {{$data ['Prescriptions']}} --}}
                     </span>
                 </div>
@@ -40,8 +46,10 @@
                 <span class="info-box-icon bg-red"><i class="fa fa-get-pocket"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">نسخه دریافت شده</span>
-                    <span class="info-box-number"> 10
+                    <span class="info-box-text">
+                        {{-- نسخه دریافت شده --}}
+                    </span>
+                    <span class="info-box-number">
                         {{-- {{$data ?? ''['PrescriptionsReceiv']}} --}}
                     </span>
                 </div>
@@ -59,10 +67,12 @@
                 <span class="info-box-icon bg-green"><i class="fa fa-database"></i></span>
 
                 <div class="info-box-content">
-                    <span class="info-box-text">جمع نسخه های ارسالی</span>
-                    <span class="info-box-number"> 10
+                    <span class="info-box-text">
+                        {{-- جمع نسخه های ارسالی --}}
+                    </span>
+                    <span class="info-box-number">
                         {{-- {{$data ?? ''['PrescriptionsReceivMoney']}} --}}
-                        <small>تومان</small></span>
+                        {{-- <small>تومان</small></span> --}}
                 </div>
                 <!-- /.info-box-content -->
             </div>
@@ -73,7 +83,7 @@
     </div>
     <!-- /.row -->
 
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header with-border">
@@ -159,53 +169,8 @@
                     </div>
                     <!-- /.row -->
                 </div>
-                <!-- ./box-body -->
-                <div class="box-footer">
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-6">
-                            <div class="description-block border-right">
-                                <span class="description-percentage text-green"><i class="fa fa-caret-up"></i>
-                                    17%</span>
-                                <h5 class="description-header"> 35,210.43 تومان</h5>
-                                <span class="description-text">کل گردش حساب</span>
-                            </div>
-                            <!-- /.description-block -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-3 col-xs-6">
-                            <div class="description-block border-right">
-                                <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i>
-                                    0%</span>
-                                <h5 class="description-header">10,390.90 تومان</h5>
-                                <span class="description-text">فروش کل</span>
-                            </div>
-                            <!-- /.description-block -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-3 col-xs-6">
-                            <div class="description-block border-right">
-                                <span class="description-percentage text-green"><i class="fa fa-caret-up"></i>
-                                    20%</span>
-                                <h5 class="description-header">24,813.53 تومان</h5>
-                                <span class="description-text">سود کل</span>
-                            </div>
-                            <!-- /.description-block -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-3 col-xs-6">
-                            <div class="description-block">
-                                <span class="description-percentage text-red"><i class="fa fa-caret-down"></i>
-                                    18%</span>
-                                <h5 class="description-header">1200</h5>
-                                <span class="description-text">اهداف</span>
-                            </div>
-                            <!-- /.description-block -->
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.box-footer -->
-            </div>
+
+            </div> --}}
             <!-- /.box -->
         </div>
         <!-- /.col -->

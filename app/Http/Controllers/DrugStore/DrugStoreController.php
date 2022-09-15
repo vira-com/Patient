@@ -40,7 +40,7 @@ class DrugStoreController extends Controller
         $user = Auth::guard('drugstore')->user();
         $data =
             [
-                "drugstoreName" => $user->Name,
+                "Name" => $user->name,
             ];
         return view('drugstore.dashboard.index', ['data' => $data]);
     }

@@ -21,7 +21,6 @@ class CreateDrugStoresTable extends Migration
             $table->string('password',100);
             $table->string('email',100);
             $table->string('founder_name',100);
-            $table->integer('drug_id');
             $table->timestamps();
         });
     }

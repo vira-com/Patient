@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,11 +43,9 @@
             <!-- Logo -->
             <a href="" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini">
-                    {{-- name logo mini --}}
-                </span>
+                <span class="logo-mini">{{ __('dashboard.drugstore_mini_panel_controller') }}</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b> {{ __('messages.welcome') }} </b></span>
+                <span class="logo-lg"><b>{{ __('dashboard.drugstore_panel_controller') }}</b></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -57,18 +56,18 @@
 
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        <!-- Messages: style can be found in dropdown.less-->
+                        <!-- dashboard: style can be found in dropdown.less-->
                         <li class="dropdown notifications-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-bell-o"></i>
                                 <span class="label label-warning">
-                                    {{-- input --}}
+                                    {{-- data wraning --}}
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="header"> {{
-                                    // {{-- input --}}
-                                    __('messages.new_notification') }}
+                                <li class="header">
+                                    {{-- data new_notification --}}
+                                    {{ __('dashboard.new_notification') }}
                                 </li>
                                 <li>
                                     <!-- inner menu: contains the actual data -->
@@ -76,50 +75,48 @@
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-users text-aqua"></i>
-                                                {{
-                                                // {{-- input --}}
-                                                __('messages.new_user_singup') }}
+                                                {{-- data new_user_singup --}}
+                                                {{ __('dashboard.new_user_singup') }}
 
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-warning text-yellow"></i>
-                                                {{ __('messages.change_name_user') }}
+                                                {{ __('dashboard.danger') }}
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-users text-red"></i>
-
+                                                {{ __('dashboard.new_user_singup') }}
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-shopping-cart text-green"></i>
-                                                {{ __('messages.new_order') }}
+                                                {{-- ۲۵ --}}
+                                                {{ __('dashboard.new_order') }}
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
                                                 <i class="fa fa-user text-red"></i>
+                                                {{ __('dashboard.change_name_user') }}
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="footer">
-                                    <a href="#">
-                                        {{ __('messages.show_all') }}
-                                    </a>
-                                </li>
+                                <li class="footer"><a href="#">
+                                        {{ __('dashboard.show_all') }}
+                                    </a></li>
                             </ul>
                         </li>
                         <!-- Tasks: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/assets/panel/dist/img/dravatar.png" class="user-image" alt="User Image">
-                                <span class="hidden-xs">
-                                    {{$data['drugstoreName']}}
+                                <span class="hidden-xs"> {{$data['Name']}}
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
@@ -128,20 +125,19 @@
                                     <img src="/assets/panel/dist/img/dravatar.png" class="img-circle" alt="User Image">
 
                                     <p>
-                                        {{$data['drugstoreName']}}
+                                        {{$data['Name']}}
 
-                                        {{-- <small>{{$data['drugstoreLevel']}}</small> --}}
                                     </p>
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-right">
                                         <a href="#" class="btn btn-default btn-flat">
-                                            {{ __('messages.profile') }}
+                                            {{ __('dashboard.profile') }}
                                         </a>
                                     </div>
                                     <div class="pull-left">
                                         <a href="{{url('drugstore/panel/logout')}}" class="btn btn-default btn-flat">
-                                            {{ __('messages.exit') }}
+                                            {{ __('dashboard.exit') }}
                                         </a>
                                     </div>
                                 </li>
@@ -165,15 +161,16 @@
                         <img src="/assets/panel/dist/img/dravatar.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-right info">
-                        <p>{{$data['drugstoreName']}}</p>
+                        <p>{{$data['Name']}}</p>
                         <a href="#"><i class="fa fa-circle text-success"></i>
+                            {{ __('dashboard.online') }}
                         </a>
                     </div>
                 </div>
                 <!-- search form -->
                 <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="جستجو">
+                        <input type="text" name="q" class="form-control" placeholder="{{ __('dashboard.search') }}">
                         <span class="input-group-btn">
                             <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
                                     class="fa fa-search"></i>
@@ -185,30 +182,39 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">
-                        {{ __('messages.menu') }}
+                        {{ __('dashboard.menu') }}
                     </li>
                     <li class="@if(Request::url() === asset('/drugstore/panel/dashboard')) active @endif treeview">
                         <a href="#">
                             <i class="fa fa-dashboard"></i> <span>
-                                {{ __('messages.dashboard') }}
+                                {{ __('dashboard.contents') }}
+
                             </span>
                             <span class="pull-left-container">
                                 <i class="fa fa-angle-right pull-left"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="@if(Request::url() === asset('/drugstore/panel/dashboard')) active @endif">
-                                <a href="/doctor/panel/dashboard"><i class="fa fa-circle-o"></i>
-                                    {{ __('messages.dashboard') }}
-                                </a>
+                            <li class="@if(Request::url() === asset('/drugstore/panel/dashboard')) active @endif"><a
+                                    href="/drugstore/panel/dashboard"><i class="fa fa-circle-o"></i>
+                                    {{ __('dashboard.dashboard') }}</a>
                             </li>
+
+                            <li class="@if(Request::url() === asset('/drugstore/panel/dashboard')) active @endif"><a
+                                    href="/drugstore/panel/getPrescriptions"><i class="fa fa-circle-o"></i>
+                                    {{ __('dashboard.drugstore_getPrescriptions') }}</a>
+                            </li>
+
                         </ul>
                     </li>
+
                     {{-- <li
                         class="@if(Request::url() === asset('/drugstore/panel/drugstores')) active @endif treeview">
                         <a href="#">
                             <i class="fa fa-files-o"></i>
-                            <span>داروخانه</span>
+                            <span>
+                                داروخانه
+                            </span>
                             <span class="pull-left-container">
                             </span>
                         </a>
@@ -219,35 +225,6 @@
                             <li><a href="/drugstore/panel/drugstore/new"><i
                                         class="@if(Request::url() === asset('/drugstore/panel/drugstores')) active @endif fa fa-circle-o"></i>افزودن
                                     داروخانه</a></li>
-                        </ul>
-                    </li>
-                    <li class="@if(Request::url() === asset('/doctor/panel/prescriptions')) active @endif treeview">
-                        <a href="#">
-                            <i class="fa fa-files-o"></i>
-                            <span>پزشکان</span>
-                            <span class="pull-left-container">
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/drugstore/panel/doctor"><i
-                                        class="@if(Request::url() === asset('/drugstore/panel/doctor')) active @endif fa fa-circle-o"></i>لیست
-                                    پزشکان</a></li>
-                            <li><a href="/drugstore/panel/doctor/new"><i
-                                        class="@if(Request::url() === asset('/drugstore/panel/doctor')) active @endif fa fa-circle-o"></i>افزودن
-                                    پزشک</a></li>
-                        </ul>
-                    </li>
-                    <li class="@if(Request::url() === asset('/doctor/panel/product')) active @endif treeview">
-                        <a href="#">
-                            <i class="fa fa-files-o"></i>
-                            <span>دارو</span>
-                            <span class="pull-left-container">
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/doctor/panel/product"><i
-                                        class="@if(Request::url() === asset('/doctor/panel/product')) active @endif fa fa-circle-o"></i>لیست
-                                    دارو</a></li>
                         </ul>
                     </li> --}}
 
@@ -283,13 +260,11 @@
                     </div>
                     <!-- /.content-wrapper -->
                     <footer class="main-footer text-left">
-                        <strong>Copyleft &copy; 2022 <a href="https://pnv.ir">
-                                {{ __('messages.Vira_Company') }}
-                            </a></strong>
+                        <strong> {{ __('dashboard.Vira_Company') }} </strong>
                     </footer>
 
                     <!-- Control Sidebar -->
-                    <aside class="control-sidebar control-sidebar-dark">
+                    {{-- <aside class="control-sidebar control-sidebar-dark">
                         <!-- Create the tabs -->
                         <!-- Tab panes -->
                         <div class="tab-content">
@@ -311,7 +286,7 @@
                     </aside>
 
                     <div class="control-sidebar-bg"></div>
-                </div>
+                </div> --}}
                 <!-- ./wrapper -->
 
                 <!-- jQuery 3 -->
@@ -321,7 +296,7 @@
                 <!-- FastClick -->
                 <script src="/assets/panel/bower_components/fastclick/lib/fastclick.js"></script>
                 <!-- AdminLTE App -->
-                <script src="/assets/panel/dist/js/AdminLTE.min.js"></script>
+                <script src="/assets/panel/dist/js/adminlte.min.js"></script>
                 <!-- Sparkline -->
                 <script src="/assets/panel/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
                 <!-- jvectormap  -->

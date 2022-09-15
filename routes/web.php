@@ -5,9 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 
 use App\Http\Controllers\Partner\PartnerController;
-use App\Http\Controllers\Partner\PartnerPatientController;
+use App\Http\Controllers\Partner\PartnerPrescriptionController;
 
 use App\Http\Controllers\DrugStore\DrugStoreController;
+use App\Http\Controllers\DrugStore\DrugStorePrescriptionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,8 +56,8 @@ Route::prefix('partner/panel')->namespace('App\Http\Controllers\Partner')->middl
     Route::get('dashboard', [PartnerController::class, 'getDashboard']);
     Route::get('logout', [PartnerController::class, 'logout']);
 
-    Route::get('sendinfo', [PartnerPatientController::class, 'showSendInfo']);
-    Route::post('sendinfohandle', [PartnerPatientController::class, 'sendInfo']);
+    Route::get('sendPrescription', [PartnerPrescriptionController::class, 'showsPrescription']);
+    Route::post('sendPrescriptionhandle', [PartnerPrescriptionController::class, 'sendPrescription']);
 });
 
 
@@ -70,5 +71,6 @@ Route::post('drugstore/ajax/login', [DrugStoreController::class, 'login']);
 Route::prefix('drugstore/panel')->namespace('App\Http\Controllers\DrugStore')->middleware(\App\Http\Middleware\DrugStore::class)->group(function () {
     Route::get('dashboard', [DrugStoreController::class, 'getDashboard']);
     Route::get('logout', [DrugStoreController::class, 'logout']);
-    
+
+    Route::get('getPrescriptions', [DrugStorePrescriptionsController::class, 'getPrescriptions']);
 });
