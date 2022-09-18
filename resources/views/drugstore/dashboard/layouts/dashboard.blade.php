@@ -41,6 +41,7 @@
 
         <header class="main-header">
             <!-- Logo -->
+
             <a href="" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">{{ __('dashboard.drugstore_mini_panel_controller') }}</span>
@@ -116,7 +117,7 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/assets/panel/dist/img/dravatar.png" class="user-image" alt="User Image">
-                                <span class="hidden-xs"> {{$data['Name']}}
+                                <span class="hidden-xs"> {{$data['name']}}
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
@@ -125,7 +126,7 @@
                                     <img src="/assets/panel/dist/img/dravatar.png" class="img-circle" alt="User Image">
 
                                     <p>
-                                        {{$data['Name']}}
+                                        {{$data['name']}}
 
                                     </p>
                                 </li>
@@ -161,7 +162,7 @@
                         <img src="/assets/panel/dist/img/dravatar.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-right info">
-                        <p>{{$data['Name']}}</p>
+                        <p>{{$data['name']}}</p>
                         <a href="#"><i class="fa fa-circle text-success"></i>
                             {{ __('dashboard.online') }}
                         </a>
@@ -310,6 +311,43 @@
                 <script src="/assets/panel/dist/js/pages/dashboard2.js"></script>
                 <!-- AdminLTE for demo purposes -->
                 <script src="/assets/panel/dist/js/demo.js"></script>
+                <script src="/assets/panel/drugstore/js/push.js"></script>
+                
+                <audio id="notification_drugstore">
+                    <source src="{{ asset('public/assets/notification/drug.mp3') }}" type="audio/mpeg">
+                </audio>
+            
+                <script>
+                    var audio = document.getElement('notification_drugstore');
+                    
+                    function playAudio(){
+                        audio.play();
+                    }
+
+                </script>
+                <script>
+                    setInterval(function(){
+                        $.get({
+                            url:'{{ route('get_notification_for_drugstore') }}',
+                            datatype: 'json',
+                            success:function(response){
+                                let data = response.data;
+                                if ( data.newPrescriptions > 0 ){
+                                    Push.create('{{ __("dashboard.drugstore_newPrescriptions_header") }}', {
+                                        body:'{{ __("dashboard.drugstore_newPrescriptions_body") }}',
+                                        // icon:-,
+                                        timeout: 3000,
+                                        // onclick:function(){}
+                                    });
+                                    location.reload();
+                                    // playAudio();
+                                }
+                                
+                            },
+
+                        });
+                    }, 100000);
+                </script>
 
 </body>
 

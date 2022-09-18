@@ -19,7 +19,12 @@ return [
     '' => '',
     'partner_sendPrescription' => 'ارسال اطلاعات بیمار',
     'drugstore_getPrescriptions' => 'دریافت نسخه های ارسال شده',
+    'drugstore_newPrescriptions_header' => 'نسخه ی جدید',
+    'drugstore_newPrescriptions_body' => 'نسخه ی جدید',
 
+    'drugstore_prescription' => 'نسخه',
+    '' => '',
+    '' => '',
 
 
 

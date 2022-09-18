@@ -72,24 +72,39 @@
                         <input type="number" name="tracking_code" id="Tracking_Code" class="form-control" />
                     </div>
                     <div class="form-group" id="freeb" style="display: none">
+
                         <div class="input-group">
                             <label class="form-label" for="file">
                                 {{ __('dashboard.image') }} :
                             </label>
-                            <input type="file" class="form-control" name="prescription" />
+                            <input type="file" multiple class="form-control uploadimgs" name="prescription[]"
+                                onchange='addimg(0)' id='f-0' data-id='0' />
+                            <div class="clear-both"></div>
+                        </div>
+                        <div class='row'>
+                            <div class="col-md-12 img-previews">
+                                <div class="img-box">
+                                    <img class="image-responsive" width="50%" id='img-0'>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
                 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="drugstores">
-                    <option selected>{{ __('dashboard.drugstore') }}</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option selected name="drugstores">{{ __('dashboard.drugstore') }}</option>
+                    @foreach($drugstores as $drugstore)
+                    <option value="{{ $drugstore['drugstore_id'] }}">{{ $drugstore['name'] }}</option>
+                    @endforeach
                 </select>
 
                 <hr>
                 <button type="submit" class="btn btn-primary">{{ __('dashboard.submit') }}</button>
+
+
+
     </form>
     </div>
     </div>
@@ -102,23 +117,46 @@
             switch(radio.value) {
                 case "tamin":
                     document.getElementById('tamin').style.display = 'block';
-                    document.getElementById('hdk').style.display = 'block';
+                    document.getElementById('hdk').style.display = 'none';
                     document.getElementById('freeb').style.display = 'none';
                     break;
                 case "hdk":
-                    document.getElementById('hdk').style.display = 'none';
+                    document.getElementById('hdk').style.display = 'block';
                     document.getElementById('tamin').style.display = 'block';
                     document.getElementById('freeb').style.display = 'none';
                     break;
                 case "freeb":
                     document.getElementById('hdk').style.display = 'none';
-                    document.getElementById('tamin').style.display = 'none';
+                    document.getElementById('tamin').style.display = 'block';
                     document.getElementById('freeb').style.display = 'block';
                     break;
                 default:
             }
         }
 </script>
-
+<script>
+    function addimg(put){
+        var b = $('#f-'+put).attr('data-id');
+        var c = parseInt(b);
+        $('#f-'+put).hide();
+        $('#del-'+put).css({'visibility':'visible'});
+        $('#img-'+put).css({'visibility':'visible'});
+        if ($('#f-'+put)[0].files && $('#f-'+put)[0].files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#img-'+put).attr('src', e.target.result);
+            }
+            reader.readAsDataURL($('#f-'+put)[0].files[0]);
+        }
+        c++;
+        $('.img-previews').append('<div class="img-box"><img class="img-responsive gal" width="170px" id="img-'+c+'"><div class="fa fa-times-circle del" id="del-'+c+'" onclick="delimg('+c+')"></div></div>');
+        $('.addimgs').append('<input type="file" class="form-control uploadimgs" name="prescription[]" onchange="addimg('+c+')" id="f-'+c+'" data-id="'+c+'"> ');
+     }
+    function delimg(put){
+    $('#del-'+put).remove();
+    $('#img-'+put).remove();
+    $('#f-'+put).remove();
+    }
+</script>
 <!-- /.content -->
 @endsection

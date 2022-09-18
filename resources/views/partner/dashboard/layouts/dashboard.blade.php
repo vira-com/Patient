@@ -41,12 +41,14 @@
 
         <header class="main-header">
             <!-- Logo -->
+
             <a href="" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">{{ __('dashboard.partner_mini_panel_controller') }}</span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><b>{{ __('dashboard.partner_panel_controller') }}</b></span>
             </a>
+
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
                 <!-- Sidebar toggle button-->
@@ -116,7 +118,7 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="/assets/panel/dist/img/dravatar.png" class="user-image" alt="User Image">
-                                <span class="hidden-xs"> {{$data['Name']}}
+                                <span class="hidden-xs"> {{$data['name']}}
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
@@ -125,7 +127,7 @@
                                     <img src="/assets/panel/dist/img/dravatar.png" class="img-circle" alt="User Image">
 
                                     <p>
-                                        {{$data['Name']}}
+                                        {{$data['name']}}
 
                                     </p>
                                 </li>
@@ -161,7 +163,7 @@
                         <img src="/assets/panel/dist/img/dravatar.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-right info">
-                        <p>{{$data['Name']}}</p>
+                        <p>{{$data['name']}}</p>
                         <a href="#"><i class="fa fa-circle text-success"></i>
                             {{ __('dashboard.online') }}
                         </a>
@@ -209,11 +211,12 @@
                         </ul>
                     </li>
 
-
                 </ul>
+
             </section>
             <!-- /.sidebar -->
         </aside>
+
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -292,6 +295,7 @@
                 <script src="/assets/panel/dist/js/pages/dashboard2.js"></script>
                 <!-- AdminLTE for demo purposes -->
                 <script src="/assets/panel/dist/js/demo.js"></script>
+
 
 </body>
 

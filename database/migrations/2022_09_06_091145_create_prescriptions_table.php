@@ -15,8 +15,9 @@ class CreatePrescriptionsTable extends Migration
     {
         Schema::create('prescriptions', function (Blueprint $table) {
             $table->id('prescription_id')->autoIncrement();
-            $table->string('patient_code',100)->nullable();
             $table->integer('partner_id');
+            $table->integer('drugstore_id');
+            $table->string('patient_code',100)->nullable();
             $table->integer('cost')->nullable();
             $table->integer('tracking_code')->nullable();
             $table->string('source_img_path',300)->nullable();

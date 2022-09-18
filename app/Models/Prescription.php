@@ -21,6 +21,7 @@ class Prescription extends Model
     protected $fillable = [
         'admin_id',
         'partner_id',
+        'drugstore_id',
         'bimeh',
         'patient_code',
         'cost',
@@ -29,7 +30,6 @@ class Prescription extends Model
     ];
 
     protected $attributes = [
-        'partner_id' => 0,
         'status' => 0,
     ];
 

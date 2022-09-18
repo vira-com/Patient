@@ -76,7 +76,7 @@
                                 </td>
                                 <td>
                                     @if($prescription['status'] == 0)
-                                    <a href="/panel/prescription/{{$prescription['id']}}"
+                                    <a href="getPrescription/{{$prescription['prescription_id']}}"
                                         class="btn btn-block btn-warning btn-sm">
                                         {{ __('prescription.change_status') }}
                                     </a>

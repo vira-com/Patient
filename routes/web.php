@@ -25,9 +25,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/wel', function () {
-    return view('welcome');
-});
+// Route::get('/wel', [PartnerPrescriptionController::class, 'showsPrescription']);
+
 
 
 /*
@@ -73,4 +72,6 @@ Route::prefix('drugstore/panel')->namespace('App\Http\Controllers\DrugStore')->m
     Route::get('logout', [DrugStoreController::class, 'logout']);
 
     Route::get('getPrescriptions', [DrugStorePrescriptionsController::class, 'getPrescriptions']);
+    Route::get('getPrescription/{id}', [DrugStorePrescriptionsController::class, 'getPrescription']);
+    Route::get('getNotificationPrescriptions', [DrugStorePrescriptionsController::class, 'getNotification'])->name('get_notification_for_drugstore');
 });
