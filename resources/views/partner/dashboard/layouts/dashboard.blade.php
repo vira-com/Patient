@@ -241,6 +241,31 @@
                             </div>
                             @endif
                         </div>
+
+                        <!-- jQuery 3 -->
+                        <script src="/assets/panel/bower_components/jquery/dist/jquery.min.js"></script>
+                        <!-- Bootstrap 3.3.7 -->
+                        <script src="/assets/panel/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+                        <!-- FastClick -->
+                        <script src="/assets/panel/bower_components/fastclick/lib/fastclick.js"></script>
+                        <!-- AdminLTE App -->
+                        <script src="/assets/panel/dist/js/adminlte.min.js"></script>
+                        <!-- Sparkline -->
+                        <script src="/assets/panel/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js">
+                        </script>
+                        <!-- jvectormap  -->
+                        <script src="/assets/panel/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+                        <script src="/assets/panel/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+                        <!-- SlimScroll -->
+                        <script src="/assets/panel/bower_components/jquery-slimscroll/jquery.slimscroll.min.js">
+                        </script>
+                        <!-- ChartJS -->
+                        <script src="/assets/panel/bower_components/Chart.js/Chart.js"></script>
+                        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+                        <script src="/assets/panel/dist/js/pages/dashboard2.js"></script>
+                        <!-- AdminLTE for demo purposes -->
+                        <script src="/assets/panel/dist/js/demo.js"></script>
+
                         @yield('main')
                     </div>
                     <!-- /.content-wrapper -->
@@ -273,28 +298,6 @@
                     <div class="control-sidebar-bg"></div>
                 </div> --}}
                 <!-- ./wrapper -->
-
-                <!-- jQuery 3 -->
-                <script src="/assets/panel/bower_components/jquery/dist/jquery.min.js"></script>
-                <!-- Bootstrap 3.3.7 -->
-                <script src="/assets/panel/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-                <!-- FastClick -->
-                <script src="/assets/panel/bower_components/fastclick/lib/fastclick.js"></script>
-                <!-- AdminLTE App -->
-                <script src="/assets/panel/dist/js/adminlte.min.js"></script>
-                <!-- Sparkline -->
-                <script src="/assets/panel/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-                <!-- jvectormap  -->
-                <script src="/assets/panel/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-                <script src="/assets/panel/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-                <!-- SlimScroll -->
-                <script src="/assets/panel/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-                <!-- ChartJS -->
-                <script src="/assets/panel/bower_components/Chart.js/Chart.js"></script>
-                <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-                <script src="/assets/panel/dist/js/pages/dashboard2.js"></script>
-                <!-- AdminLTE for demo purposes -->
-                <script src="/assets/panel/dist/js/demo.js"></script>
 
 
 </body>

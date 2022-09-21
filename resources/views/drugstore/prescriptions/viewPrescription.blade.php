@@ -28,15 +28,12 @@
                 <div class="form-group">
                     <label for="bimeh">{{ __('prescription.bimeh_show') }}</label>
                     <span class="form-control" id="bimeh">
-                        @if ($prescription->bimeh == 'tamin'){
+                        @if ($prescription->bimeh == 'tamin')
                         {{ __('prescription.bimeh_tamin') }}
-                        }
-                        @elseif($prescription->bimeh == 'hdk'){
+                        @elseif($prescription->bimeh == 'hdk')
                         {{ __('prescription.bimeh_hdk') }}
-                        }
-                        @elseif($prescription->bimeh == 'freeb'){
+                        @elseif($prescription->bimeh == 'freeb')
                         {{ __('prescription.bimeh_free') }}
-                        }
                         @endif
                     </span>
                 </div>
@@ -44,32 +41,33 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label for="nCode">{{ __('prescription.patient_code_show') }}</label>
+                    <label for="patient_code">{{ __('prescription.patient_code_show') }}</label>
                     <span class="form-control" id="patient_code"> {{ $prescription['patient_code'] }}</span>
                 </div>
             </div>
 
-            @if ($prescription->bimeh == 'hdk'){
+            @if ($prescription->bimeh == 'hdk')
             <div class="col-md-12">
                 <div class="form-group">
-                    <label for="nCode">{{ __('prescription.tracking_code_show') }}</label>
-                    <span class="form-control" id="tracking_code"> {{ $prescription['tracking_code_show'] }}</span>
+                    <label for="tracking_cod">{{ __('prescription.tracking_code_show') }}</label>
+                    <span class="form-control" id="tracking_code"> {{ $prescription['tracking_code'] }}</span>
                 </div>
             </div>
-            }@endif
-            @if ($prescription->bimeh == 'freeb'){
+            @endif
+            @if ($prescription->bimeh == 'freeb')
 
             <div class="col-md-12">
                 <div class="form-group">
 
                     @foreach($imgs as $img)
                     <div class="col-xs-{{12/$loop->count}}">
-                        <img src="data:image/png;{{$img}}" class="img-bordered-sm" style="width: 100% ;border-radius: 8px;" alt="صفحه {{$loop->index + 1}}"
-                             onclick="myFunction(this);">
+                        <img src="{{ asset($img) }}" class="img-bordered-sm"
+                            style="width: 100% ;border-radius: 8px;" alt="صفحه {{$loop->index + 1}}"
+                            onclick="myFunction(this);">
                     </div>
-                     @endforeach
+                    @endforeach
 
-                     <hr>
+                    <hr>
                     <div class="row">
                         <div class="container" style="width: auto;">
                             <!-- Close the image -->
@@ -87,7 +85,14 @@
 
                 </div>
             </div>
-            }@endif
+            @endif
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="cost">{{ __('prescription.cost_show') }}</label>
+                    <input type="text" class="form-control" id="cost" name="cost">
+                </div>
+            </div>
 
             <button type="button" class="btn btn-block btn-success">{{ __('prescription.success') }}</button>
             <button type="button" class="btn btn-block btn-info">{{ __('prescription.waiting') }}</button>

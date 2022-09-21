@@ -57,7 +57,9 @@ Route::prefix('partner/panel')->namespace('App\Http\Controllers\Partner')->middl
 
     Route::get('sendPrescription', [PartnerPrescriptionController::class, 'showsPrescription']);
     Route::post('sendPrescriptionhandle', [PartnerPrescriptionController::class, 'sendPrescription']);
+
 });
+Route::post('getQRCode/{mobile_token}', [PartnerPrescriptionController::class, 'getQRCode'])->name('get_qrcode');
 
 
 /*

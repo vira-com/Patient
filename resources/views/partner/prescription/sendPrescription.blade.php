@@ -73,35 +73,80 @@
                     </div>
                     <div class="form-group" id="freeb" style="display: none">
 
-                        <div class="input-group">
-                            <label class="form-label" for="file">
-                                {{ __('dashboard.image') }} :
-                            </label>
-                            <input type="file" multiple class="form-control uploadimgs" name="prescription[]"
-                                onchange='addimg(0)' id='f-0' data-id='0' />
-                            <div class="clear-both"></div>
+                        <label class="form-label" for="file">
+                            {{ __('dashboard.image') }} :
+                        </label>
+                        {{-- prescription --}}
+                        <div>
+                            <div class="row" id="coba"></div>
                         </div>
-                        <div class='row'>
-                            <div class="col-md-12 img-previews">
-                                <div class="img-box">
-                                    <img class="image-responsive" width="50%" id='img-0'>
-                                </div>
+                        <div class="container mt-4">
+                            <button type="button" class="btn btn-block btn-default" data-toggle="modal"
+                                data-target="#modal-default">
+                                {{ __('prescription.qr_show') }}
+                            </button>
+                            <div class="modal fade" id="modal-default">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                                onchange="qrCode()">
+                                                <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">
+                                                {{-- {{ __('prescription.qr_show') }} --}}
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <center>
+                                                        {{-- {!! QrCode::size(300)->generate(Request::url("{{
+                                                        route('get_qrcode_for_partner', $partner->token_mobile) }}" ))
+                                                        !!} --}}
 
+                                                        {!! QrCode::size(300)->generate(
+                                                        Request::fullUrl("{{route('get_qrcode')}}") ) !!}
+
+                                                        {{-- Request::url("{{
+                                                        route('get_qrcode_for_partner') }}" . "?" . "mobile_token=" .
+                                                        "{{ $partner->token_mobile }}" )) --}}
+                                                    </center>
+                                                </div>
+                                            </div>
+                                            </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default pull-left"
+                                                data-dismiss="modal">
+                                                {{ __('prescription.exit') }}
+
+                                            </button>
+                                            {{-- <button type="button" class="btn btn-primary">
+                                                {{ __('prescription.save') }}
+                                            </button> --}}
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
+                                </div>
+                                <!-- /.modal-dialog -->
                             </div>
 
                         </div>
+
+
                     </div>
-                </div>
 
-                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="drugstores">
-                    <option selected name="drugstores">{{ __('dashboard.drugstore') }}</option>
-                    @foreach($drugstores as $drugstore)
-                    <option value="{{ $drugstore['drugstore_id'] }}">{{ $drugstore['name'] }}</option>
-                    @endforeach
-                </select>
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                        name="drugstores">
+                        <option selected name="drugstores">{{ __('dashboard.drugstore') }}</option>
+                        @foreach($drugstores as $drugstore)
+                        <option value="{{ $drugstore['drugstore_id'] }}">{{ $drugstore['name'] }}</option>
+                        @endforeach
+                    </select>
 
-                <hr>
-                <button type="submit" class="btn btn-primary">{{ __('dashboard.submit') }}</button>
+                    <hr>
+                    <button type="submit" class="btn btn-primary">{{ __('dashboard.submit') }}</button>
 
 
 
@@ -110,6 +155,13 @@
     </div>
 </section>
 
+<script>
+    function qrCode(){
+
+
+
+    }
+</script>
 
 <script>
     function myFunc(radio) {
@@ -134,29 +186,47 @@
             }
         }
 </script>
+
+<script src="/assets/panel/dist/js/spartan-multi-image-picker.js"></script>
+
 <script>
-    function addimg(put){
-        var b = $('#f-'+put).attr('data-id');
-        var c = parseInt(b);
-        $('#f-'+put).hide();
-        $('#del-'+put).css({'visibility':'visible'});
-        $('#img-'+put).css({'visibility':'visible'});
-        if ($('#f-'+put)[0].files && $('#f-'+put)[0].files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#img-'+put).attr('src', e.target.result);
+    $(function () {
+        $("#coba").spartanMultiImagePicker({
+            fieldName: 'images[]',
+            maxCount: 4,
+            rowHeight: '215px',
+            groupClassName: 'col-3',
+            maxFileSize: '',
+            placeholderImage: {
+                image: '{{asset('/assets/panel/img2.jpg')}}',
+                width: '25%'
+            },
+            dropFileLabel: "Drop Here",
+            onAddRow: function (index, file) {
+
+            },
+            onRenderedPreview: function (index) {
+
+            },
+            onRemoveRow: function (index) {
+
+            },
+            onExtensionErr: function (index, file) {
+                toastr.error("{{ __('messages.format_image') }}", {
+                    CloseButton: true,
+                    ProgressBar: true
+                });
+            },
+            onSizeErr: function (index, file) {
+                toastr.error("{{ __('messages.big_image') }}", {
+                    CloseButton: true,
+                    ProgressBar: true
+                });
             }
-            reader.readAsDataURL($('#f-'+put)[0].files[0]);
-        }
-        c++;
-        $('.img-previews').append('<div class="img-box"><img class="img-responsive gal" width="170px" id="img-'+c+'"><div class="fa fa-times-circle del" id="del-'+c+'" onclick="delimg('+c+')"></div></div>');
-        $('.addimgs').append('<input type="file" class="form-control uploadimgs" name="prescription[]" onchange="addimg('+c+')" id="f-'+c+'" data-id="'+c+'"> ');
-     }
-    function delimg(put){
-    $('#del-'+put).remove();
-    $('#img-'+put).remove();
-    $('#f-'+put).remove();
-    }
+        });
+    });
 </script>
+
+
 <!-- /.content -->
 @endsection
