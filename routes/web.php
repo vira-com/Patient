@@ -48,7 +48,7 @@ singup - login
 patient 
 
 */
-Route::get('partner/panel/login', [PartnerController::class, 'showLogin']);
+Route::get('partner/panel/login', [PartnerController::class, 'showLogin'])->name('partner_login');
 Route::post('partner/panel/loginhandle', [PartnerController::class, 'login']);
 Route::post('partner/ajax/login', [PartnerController::class, 'login']);
 Route::prefix('partner/panel')->namespace('App\Http\Controllers\Partner')->middleware(\App\Http\Middleware\Partner::class)->group(function () {
@@ -59,7 +59,7 @@ Route::prefix('partner/panel')->namespace('App\Http\Controllers\Partner')->middl
     Route::post('sendPrescriptionhandle', [PartnerPrescriptionController::class, 'sendPrescription']);
 
 });
-Route::post('getQRCode/{mobile_token}', [PartnerPrescriptionController::class, 'getQRCode'])->name('get_qrcode');
+Route::get('getQRCode/{mobile_token}', [PartnerPrescriptionController::class, 'getQRCode'])->name('get_qrcode');
 
 
 /*

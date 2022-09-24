@@ -101,16 +101,9 @@
                                             <div class="card">
                                                 <div class="card-body">
                                                     <center>
-                                                        {{-- {!! QrCode::size(300)->generate(Request::url("{{
-                                                        route('get_qrcode_for_partner', $partner->token_mobile) }}" ))
-                                                        !!} --}}
 
-                                                        {!! QrCode::size(300)->generate(
-                                                        Request::fullUrl("{{route('get_qrcode')}}") ) !!}
+                                                        {!! QrCode::size(300)->generate('http://127.0.0.1/getQRCode/' . $partner->token_mobile ) !!}
 
-                                                        {{-- Request::url("{{
-                                                        route('get_qrcode_for_partner') }}" . "?" . "mobile_token=" .
-                                                        "{{ $partner->token_mobile }}" )) --}}
                                                     </center>
                                                 </div>
                                             </div>
@@ -137,13 +130,15 @@
 
                     </div>
 
-                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                    {{-- <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
                         name="drugstores">
                         <option selected name="drugstores">{{ __('dashboard.drugstore') }}</option>
                         @foreach($drugstores as $drugstore)
                         <option value="{{ $drugstore['drugstore_id'] }}">{{ $drugstore['name'] }}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
+
+                    
 
                     <hr>
                     <button type="submit" class="btn btn-primary">{{ __('dashboard.submit') }}</button>

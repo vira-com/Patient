@@ -81,20 +81,20 @@ class PartnerPrescriptionController extends Controller
         return redirect('/partner/panel/sendPrescription');
     }
 
-    function getQRCode(Request $request, $mobile_token)
+    function getQRCode($mobile_token)
     {
         $partner = Partner::firstWhere('token_mobile', $mobile_token);
-        if ($request) {
-            if ($partner) {
-                if (Auth::guard('partner')->attempt(['email' => $partner['email'], 'password' => $partner['password'], $request->get('remember')])) {
-                    return redirect('partner/panel/sendPrescription');
-                } else {
-                    return back()->withInput();
-                }
+        if ($partner) {
+            if (Auth::guard('partner')->attempt(['email' => $partner['email'], 'password' => $partner['password'], $request->get('remember')])) {
+                return redirect('partner/panel/sendPrescription');
             } else {
-                    return back()->withInput();
+                return redirect('partner_login');
             }
+        } else {
+            return redirect('partner_login');
         }
     }
+
+    // function 
 
 }
