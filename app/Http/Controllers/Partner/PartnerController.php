@@ -7,7 +7,6 @@ use App\Models\Partner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 
 class PartnerController extends Controller
 {
@@ -53,7 +52,7 @@ class PartnerController extends Controller
         $user = Auth::guard('partner')->user();
         $data =
             [
-                "partnerName" => $user->Name,
+                "name" => $user->name,
             ];
         return view('partner.dashboard.index', ['data' => $data]);
     }

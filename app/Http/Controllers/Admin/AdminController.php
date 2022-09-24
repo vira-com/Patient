@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -40,18 +40,11 @@ class AdminController extends Controller
 
     public function getDashboard()
     {
-        // $Prescriptions = Prescription::count();
-        // $PrescriptionsReceiv = Prescription::where('status', 2);
-        // $admin = Auth::guard('admin')->user();
-        // $data = array(
-        //     'Prescriptions' => $Prescriptions,
-        //     'PrescriptionsReceiv' => $PrescriptionsReceiv->count(),
-        //     'PrescriptionsReceivMoney' => $PrescriptionsReceiv->sum('price'),
-        //     'adminName' => $admin->fname . ' ' . $admin->lname,
-        //     'adminLevel' => $admin->level,
-
-        // );   ['data' => $data]
-        return view('admin.dashboard.index');
+        $admin = Auth::guard('admin')->user();
+        $data = [
+            "Name" => $admin->name,
+        ];
+        return view('admin.dashboard.index', ['data' => $data]);
     }
 
     public function logout()

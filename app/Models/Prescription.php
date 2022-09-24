@@ -9,13 +9,31 @@ class Prescription extends Model
 {
     use HasFactory;
 
-    protected $table = 'prescription';
+    protected $table = 'prescriptions';
     /**
      * The primary key associated with the table.
      *
      * @var string
      */
     protected $primaryKey = 'prescription_id';
+
+
+    protected $fillable = [
+        'admin_id',
+        'partner_id',
+        'drugstore_id',
+        'bimeh',
+        'patient_code',
+        'cost',
+        'tracking_code',
+        'source_img_path',
+    ];
+
+    protected $attributes = [
+        'status' => 0,
+    ];
+
+
 
     public function drug()
     {

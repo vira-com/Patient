@@ -15,7 +15,7 @@ class CreatePartnersTable extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id('partner_id')->autoIncrement();
-            $table->string('Name', 100);
+            $table->string('name', 100);
             $table->string('phone', 100);
             $table->string('email', 100);
             $table->string('password', 100);
@@ -23,6 +23,7 @@ class CreatePartnersTable extends Migration
             $table->string('doctor_specialty', 100);
             $table->string('doctor_location', 100);
             $table->string('doctor_phone', 100);
+            $table->string('token_mobile',100);
             $table->integer('num_patient');
             $table->timestamps();
         });

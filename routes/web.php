@@ -5,9 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 
 use App\Http\Controllers\Partner\PartnerController;
-use App\Http\Controllers\Partner\PartnerPatientController;
+use App\Http\Controllers\Partner\PartnerPrescriptionController;
 
 use App\Http\Controllers\DrugStore\DrugStoreController;
+use App\Http\Controllers\DrugStore\DrugStorePrescriptionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/wel', function () {
-    return view('welcome');
-});
+// Route::get('/wel', [PartnerPrescriptionController::class, 'showsPrescription']);
+
 
 
 /*
@@ -48,16 +48,18 @@ singup - login
 patient 
 
 */
-Route::get('partner/panel/login', [PartnerController::class, 'showLogin']);
+Route::get('partner/panel/login', [PartnerController::class, 'showLogin'])->name('partner_login');
 Route::post('partner/panel/loginhandle', [PartnerController::class, 'login']);
 Route::post('partner/ajax/login', [PartnerController::class, 'login']);
 Route::prefix('partner/panel')->namespace('App\Http\Controllers\Partner')->middleware(\App\Http\Middleware\Partner::class)->group(function () {
     Route::get('dashboard', [PartnerController::class, 'getDashboard']);
     Route::get('logout', [PartnerController::class, 'logout']);
 
-    Route::get('sendinfo', [PartnerPatientController::class, 'showSendInfo']);
-    Route::post('sendinfohandle', [PartnerPatientController::class, 'sendInfo']);
+    Route::get('sendPrescription', [PartnerPrescriptionController::class, 'showsPrescription']);
+    Route::post('sendPrescriptionhandle', [PartnerPrescriptionController::class, 'sendPrescription']);
+
 });
+Route::get('getQRCode/{mobile_token}', [PartnerPrescriptionController::class, 'getQRCode'])->name('get_qrcode');
 
 
 /*
@@ -70,5 +72,8 @@ Route::post('drugstore/ajax/login', [DrugStoreController::class, 'login']);
 Route::prefix('drugstore/panel')->namespace('App\Http\Controllers\DrugStore')->middleware(\App\Http\Middleware\DrugStore::class)->group(function () {
     Route::get('dashboard', [DrugStoreController::class, 'getDashboard']);
     Route::get('logout', [DrugStoreController::class, 'logout']);
-    
+
+    Route::get('getPrescriptions', [DrugStorePrescriptionsController::class, 'getPrescriptions']);
+    Route::get('getPrescription/{id}', [DrugStorePrescriptionsController::class, 'getPrescription']);
+    Route::get('getNotificationPrescriptions', [DrugStorePrescriptionsController::class, 'getNotification'])->name('get_notification_for_drugstore');
 });

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>ورود به پنل مدیریت</title>
+    <title>{{ __('auth.admin_login_panel') }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -36,14 +36,14 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>ورود پنل مدیریت</b></a>
+            <a href="#"><b>{{ __('auth.admin_login_panel') }}</b></a>
         </div>
 
         <div class="row panelcss-hide" id="snackbar">
             <div class="alert alert-danger fade in alert-dismissible show">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <ul>
-                    <li>اطلاعات ورود صحیح نمی باشد</li>
+                    <li>{{ __('auth.failed') }}</li>
                 </ul>
             </div>
         </div>
@@ -51,16 +51,18 @@
 
         <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">فرم زیر را تکمیل کنید و ورود بزنید</p>
+            <p class="login-box-msg">{{ __('auth.form_input') }}</p>
 
-            {!! Form::open(['url'=>'partner/panel/loginhandle','id'=>'CheckForm','method'=>'post','class'=>'text-left'])
+            {!! Form::open(['url'=>'admin/panel/loginhandle','id'=>'CheckForm','method'=>'post','class'=>'text-left'])
             !!}
+
             <div class="form-group has-feedback">
-                <input type="text" name="email" class="form-control" placeholder="نام کاربری">
+                <input type="text" name="email" class="form-control" placeholder="{{ __('auth.name_input') }}">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" name="password" class="form-control" placeholder="رمز عبور">
+                <input type="password" name="password" class="form-control"
+                    placeholder="{{ __('auth.password_input') }}">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <input type="hidden" name="locale" @if(\App::isLocale('fa')) value="fa" @else value="en" @endif>
@@ -68,13 +70,13 @@
                 <div class="col-xs-12">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox"> مرا به خاطر بسپار
+                            <input type="checkbox"> {{ __('auth.remember_me') }}
                         </label>
                     </div>
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-12">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">ورود</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">{{ __('auth.input') }}</button>
                 </div>
                 <!-- /.col -->
             </div>

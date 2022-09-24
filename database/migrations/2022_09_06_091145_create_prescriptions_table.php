@@ -14,12 +14,15 @@ class CreatePrescriptionsTable extends Migration
     public function up()
     {
         Schema::create('prescriptions', function (Blueprint $table) {
-            $table->id('prescription_id');
-            $table->string('patient_code',100);
-            $table->integer('doctor_id');
-            $table->integer('cost');
-            $table->integer('tracking_code');
-            $table->string('source_img_path',300);
+            $table->id('prescription_id')->autoIncrement();
+            $table->integer('partner_id');
+            $table->integer('drugstore_id');
+            $table->string('patient_code',100)->nullable();
+            $table->integer('cost')->nullable();
+            $table->integer('tracking_code')->nullable();
+            $table->string('source_img_path',300)->nullable();
+            $table->string('bimeh',300);
+            $table->string('status',300);
             $table->timestamps();
         });
     }
