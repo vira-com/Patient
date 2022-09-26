@@ -5,6 +5,7 @@
 @endsection
 @section('main')
 <!-- Content Header (Page header) -->
+<link rel="stylesheet" href="/assets/panel/partner/ol.css">
 
 <section class="content-header">
     <h1>
@@ -25,6 +26,7 @@
 
 <!-- Main content -->
 <section class="content">
+
 
     <form action="{{ url('/partner/panel/sendPrescriptionhandle') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -102,7 +104,8 @@
                                                 <div class="card-body">
                                                     <center>
 
-                                                        {!! QrCode::size(300)->generate('http://127.0.0.1/getQRCode/' . $partner->token_mobile ) !!}
+                                                        {!! QrCode::size(300)->generate('http://127.0.0.1/getQRCode/' .
+                                                        $partner->token_mobile ) !!}
 
                                                     </center>
                                                 </div>
@@ -138,7 +141,9 @@
                         @endforeach
                     </select> --}}
 
-                    
+
+                    <div id="map" style="height: 500px;"></div>
+                    <input type="hidden" name="loc" value="" id='loc'>
 
                     <hr>
                     <button type="submit" class="btn btn-primary">{{ __('dashboard.submit') }}</button>
@@ -150,12 +155,30 @@
     </div>
 </section>
 
+<script src="/assets/panel/partner/ol.js"></script>
 <script>
-    function qrCode(){
+    var map = new ol.Map({
+        target: "map",
+        // controls: ol.control.defaults({ attribution:false, zoom:false, rotate:false }),
+        layers:[
+            new ol.layer.Tile({
+                 source:new ol.source.OSM({crossOrigin : null})
+            })
+        ],
+        view: new ol.View({
+            projection: 'EPSG:4326', 
+            center: [55.9774, 30.4077],
+            zoom:15
+        })
+    });
 
+    var zoomSlider = new ol.control.ZoomSlider();
+    map.addControl(zoomSlider);
 
-
-    }
+    map.on('singleclick', function(env){
+        var coordinate = env.coordinate;
+        document.getElementById('loc').value = coordinate;
+    })
 </script>
 
 <script>
